@@ -17,6 +17,19 @@ ____________________________________________
 
 ## Table
 
+### Default sort oder:
+```javascript
+ const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
+        column: 'created',
+        direction: 'descending'
+    })
+```
+
+
+
+
+
+
 
 <br><br>
 <br><br>
