@@ -23,6 +23,7 @@ ____________________________________________
 <br><br>
 
 # Avatar
+- You can use images from your public folder for src
 ```javascript
 import {Avatar} from "@nextui-org/react";
 
