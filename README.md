@@ -8,6 +8,42 @@
 
 
 
+
+
+
+
+
+
+
+
+<br><br>
+____________________________________________
+____________________________________________
+
+<br><br>
+
+# Avatar
+```javascript
+import {Avatar} from "@nextui-org/react";
+
+ <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+	{connectedAccount === 'null' ? (
+	    <NavbarItem className="hidden lg:flex">{metamaskButton}</NavbarItem>
+	) : (
+	    <Avatar isBordered color="secondary" src="/avatar/wallet/robot-purple.jpeg" />
+	)}
+</NavbarContent>
+```
+
+
+
+
+
+
+
+
+
+
 <br><br>
 ____________________________________________
 ____________________________________________
