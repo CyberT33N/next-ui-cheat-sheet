@@ -14,6 +14,50 @@
 
 
 
+<br><br>
+____________________________________________
+____________________________________________
+
+<br><br>
+
+# Customization
+
+<br><br>
+
+## Colors
+- NextUI's plugin enables you to personalize the semantic colors of the theme such as primary, secondary, success, etc.
+- tailwind.config.js
+
+<br><br>
+<br><br>
+
+### Default colors
+- https://nextui.org/docs/customization/colors#default-colors
+- Common colors, like TailwindCSS colors, remain consistent regardless of the theme. To prevent conflicts with TailwindCSS colors, common colors are initially disabled but can be activated with the addCommonColors option.
+
+
+<br><br>
+<br><br>
+
+### Semantic Colors
+- Semantic colors adapt with the theme, delivering meaning and reinforcing your brand identity. For an effective palette, we recommend using color ranges from 50 to 900. You can use tools like Eva Design System, Smart Watch, Palette or Color Box to generate your palette.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <br><br>
