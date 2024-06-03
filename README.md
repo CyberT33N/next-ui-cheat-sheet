@@ -286,9 +286,8 @@ import React from "react";
 import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
 
 export default function TransactionsTable() {
-  const copyAddress = (value: string, id: string) => {
+  const copyAddress = (value: string) => {
         navigator.clipboard.writeText(value)
-        setTooltipId(id)
     }
 
 const renderCell = useCallback((transaction: Transaction, columnKey: React.Key) => {
@@ -304,7 +303,7 @@ const renderCell = useCallback((transaction: Transaction, columnKey: React.Key) 
                         <PopoverTrigger>
                             <button 
                                 style={{ marginLeft: '0.2rem', outline: 'none' }} 
-                                onClick={() => copyAddress(transaction.from, transaction.hash)}
+                                onClick={() => copyAddress(transaction.from)}
                                 className="ml-2 flex items-end">
                                 <CopyClipboardIcon />
                             </button>
