@@ -266,6 +266,88 @@ const metaMaskNotFoundModal = (
 
 
 
+<br><br>
+<br><br>
+____________________________________________
+____________________________________________
+
+<br><br>
+<br><br>
+
+
+# Popover
+- https://nextui.org/docs/components/popover
+
+<br><br>
+
+## onClick Event with table rows
+```typescript
+import React from "react";
+import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
+
+export default function TransactionsTable() {
+  const copyAddress = (value: string, id: string) => {
+        navigator.clipboard.writeText(value)
+        setTooltipId(id)
+    }
+
+const renderCell = useCallback((transaction: Transaction, columnKey: React.Key) => {
+        const cellValue = transaction[columnKey as keyof Transaction]
+
+        switch (columnKey) {
+        case 'from':
+            return (
+                <div className="flex items-center">    
+                    <p>{transaction.from.substring(0, 6) + '...'}</p>
+                    
+                    <Popover showArrow={true} placement="top"shadow="lg">
+                        <PopoverTrigger>
+                            <button 
+                                style={{ marginLeft: '0.2rem', outline: 'none' }} 
+                                onClick={() => copyAddress(transaction.from, transaction.hash)}
+                                className="ml-2 flex items-end">
+                                <CopyClipboardIcon />
+                            </button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                            <div className="px-1 py-2">
+                                <div className="text-tiny">Copied Address:&nbsp;  
+                                    <Code>{transaction.from}</Code>
+                                </div>
+                            </div>
+                        </PopoverContent>
+                    </Popover>
+                </div>
+            )
+        default:
+            return cellValue
+        }
+    }, [])
+
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br><br>
 ____________________________________________
