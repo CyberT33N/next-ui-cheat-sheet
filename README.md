@@ -66,6 +66,43 @@ ____________________________________________
 
 
 
+<br><br>
+____________________________________________
+____________________________________________
+
+<br><br>
+
+# Navbar
+- https://nextui.org/docs/components/navbar
+
+<br><br>
+
+## Transparent Navbar
+- isBlurred is default to true so we must set it to false for transparent background
+```javascript
+// ==== NEXT UI ====
+import {
+    Navbar as NextUINavbar,
+} from '@nextui-org/navbar'
+
+return (
+        <NextUINavbar 
+            maxWidth="xl" 
+            position="sticky"
+            isBlurred={false}
+            style={{ backgroundColor: 'rgba(255, 255, 255, 0)' }}
+        >
+        </NextUINavbar>
+)
+```
+
+
+
+
+
+
+
+
 
 <br><br>
 ____________________________________________
