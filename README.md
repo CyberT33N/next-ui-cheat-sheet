@@ -21,6 +21,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <br><br>
 ____________________________________________
 ____________________________________________
@@ -48,6 +57,7 @@ ____________________________________________
 
 ### Semantic Colors
 - Semantic colors adapt with the theme, delivering meaning and reinforcing your brand identity. For an effective palette, we recommend using color ranges from 50 to 900. You can use tools like Eva Design System, Smart Watch, Palette or Color Box to generate your palette.
+
 
 
 
@@ -146,7 +156,7 @@ ____________________________________________
 
 <br><br>
 
-## Loading Screen until all components are loaded
+## Show loading icon until javascrip depedencies are loaded
 - app/providers.tsx
 ```typescript
 'use client'
