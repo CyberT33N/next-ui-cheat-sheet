@@ -156,7 +156,7 @@ ____________________________________________
 
 <br><br>
 
-## Show loading icon until javascrip depedencies are loaded
+## Show loading icon until children is fully loaded
 - app/providers.tsx
 ```typescript
 'use client'
@@ -171,7 +171,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes'
 import { ThemeProviderProps } from 'next-themes/dist/types'
 
 // ==== REACT ====
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import * as React from 'react'
 
 // ==== COMPONENTS ====
@@ -184,6 +184,7 @@ export interface ProvidersProps {
 export function Providers({ children, themeProps }: ProvidersProps) {
     const router = useRouter()
     const [loading, setLoading] = useState(true)
+    const contentRef = useRef<HTMLDivElement>(null)
 
     const initializeVanta = (theme: string) => {
         const settings = generateVantaGlobeSettings({ theme })
@@ -191,7 +192,7 @@ export function Providers({ children, themeProps }: ProvidersProps) {
     }
 
     useEffect(() => {
-        const loadThree = async() => {
+        const loadThree = async () => {
             await import('@/lib/three')
             await import('@/lib/vanta/vanta.globe.js')
 
@@ -204,16 +205,30 @@ export function Providers({ children, themeProps }: ProvidersProps) {
         
         loadThree()
     }, [])
-    
+
+    useEffect(() => {
+        if (!loading && contentRef.current) {
+            const observer = new MutationObserver(() => {
+                if (contentRef.current?.childElementCount > 0) {
+                    setLoading(false)
+                }
+            })
+            observer.observe(contentRef.current, { childList: true, subtree: true })
+
+            return () => {
+                observer.disconnect()
+            }
+        }
+    }, [loading])
+
     return (
         <NextUIProvider navigate={router.push}>
             <NextThemesProvider {...themeProps}>
                 <div className="relative flex flex-col h-screen" id="rootLayout">
-                    {loading ? <Loading/> : (
-                        <>
-                            {children}
-                        </>
-                    )}
+                    {loading && <Loading />}
+                    <div ref={contentRef} className={loading ? 'hidden' : ''}>
+                        {children}
+                    </div>
                 </div>
             </NextThemesProvider>
         </NextUIProvider>
