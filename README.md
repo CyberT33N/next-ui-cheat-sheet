@@ -104,6 +104,133 @@ return (
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+____________________________________________
+____________________________________________
+
+<br><br>
+
+# Loading
+
+<br><br>
+
+## Loading Screen until all components are loaded
+- app/providers.tsx
+```typescript
+'use client'
+
+// ==== CONFIG ====
+import { generateVantaGlobeSettings } from '@/config/vanta'
+
+// ==== NEXT UI ====
+import { NextUIProvider } from '@nextui-org/system'
+import { useRouter } from 'next/navigation'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { ThemeProviderProps } from 'next-themes/dist/types'
+
+// ==== REACT ====
+import { useEffect, useState } from 'react'
+import * as React from 'react'
+
+// ==== COMPONENTS ====
+import Loading from '@/components/Loader'
+export interface ProvidersProps {
+	children: React.ReactNode;
+	themeProps?: ThemeProviderProps;
+}
+
+export function Providers({ children, themeProps }: ProvidersProps) {
+    const router = useRouter()
+    const [loading, setLoading] = useState(true)
+
+    const initializeVanta = (theme: string) => {
+        const settings = generateVantaGlobeSettings({ theme })
+        window.vantaSession = window.VANTA.GLOBE(settings)
+    }
+
+    useEffect(() => {
+        const loadThree = async() => {
+            await import('@/lib/three')
+            await import('@/lib/vanta/vanta.globe.js')
+
+            localStorage.setItem('currentCrypto', 'ETH')
+
+            const theme = localStorage.getItem('theme') || 'dark'
+            initializeVanta(theme)
+            setLoading(false)
+        }
+        
+        loadThree()
+    }, [])
+    
+    return (
+        <NextUIProvider navigate={router.push}>
+            <NextThemesProvider {...themeProps}>
+                <div className="relative flex flex-col h-screen" id="rootLayout">
+                    {loading ? <Loading/> : (
+                        <>
+                            {children}
+                        </>
+                    )}
+                </div>
+            </NextThemesProvider>
+        </NextUIProvider>
+    )
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br><br>
 ____________________________________________
 ____________________________________________
