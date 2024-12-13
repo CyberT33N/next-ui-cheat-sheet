@@ -1,8 +1,45 @@
-# NextUI Cheat Shee
+# NextUI Cheat Sheet
 
 
 
 
+<br><br>
+
+## Installation
+- https://nextui.org/docs/guide/installation
+
+
+
+
+
+<br><br>
+
+### Automatic Installation
+- https://nextui.org/docs/guide/installation#automatic-installation
+```shell
+npm install -g nextui-cli
+
+## Initialize the project by using the init command.
+nextui init my-nextui-app
+
+cd my-nextui-app
+npm install
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br>
+<br><br>
 
 # Templates
 
