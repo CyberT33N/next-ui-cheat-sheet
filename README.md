@@ -26,12 +26,46 @@ cd my-nextui-app
 npm install
 ```
 
+
+
+
+<br><br>
 <br><br>
 
-## Inside of React Project
+## Manual Installatio
+
+<br><br>
+
+###  Global Installation
 ```shell
 npm install @nextui-org/react framer-motion
 ```
+
+<br><br>
+
+tailwind.config.js:
+```javascript
+// tailwind.config.js
+const {nextui} = require("@nextui-org/react");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    // ...
+    // make sure it's pointing to the ROOT node_module
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  darkMode: "class",
+  plugins: [nextui()],
+};
+```
+
+
+
+
 
 ```javascript
 import { NextUIProvider } from '@nextui-org/react';
