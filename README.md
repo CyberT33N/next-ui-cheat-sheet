@@ -5,7 +5,7 @@
 
 <br><br>
 
-## Installation
+# Installation
 - https://nextui.org/docs/guide/installation
 
 
@@ -14,7 +14,7 @@
 
 <br><br>
 
-### Automatic Installation
+## Automatic Installation
 - https://nextui.org/docs/guide/installation#automatic-installation
 ```shell
 npm install -g nextui-cli
@@ -26,8 +26,28 @@ cd my-nextui-app
 npm install
 ```
 
+<br><br>
 
+## Inside of React Project
+```shell
+npm install @nextui-org/react framer-motion
+```
 
+```javascript
+import { NextUIProvider } from '@nextui-org/react';
+
+    return (
+        <NextUIProvider>
+            <div className="app-container">
+                
+            </div>
+        </NextUIProvider>
+    )
+}
+
+export default App
+
+```
 
 
 
